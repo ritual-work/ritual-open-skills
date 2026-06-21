@@ -1,0 +1,13 @@
+{
+  "name": "ritual-open-skills",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Free, standalone, task-native skills for OpenClaw/ClawHub. Rendered from the Ritual monorepo catalog.",
+  "license": "MIT-0",
+  "homepage": "https://ritual.work",
+  "type": "module",
+  "scripts": {
+    "generate": "node scripts/generate-openclaw-skills.mjs",
+    "check": "node scripts/generate-openclaw-skills.mjs --check"
+  }
+}

@@ -1,0 +1,83 @@
+# Render-guard + (manual) ClawHub publish for ritual-open-skills.
+#
+# On every PR: re-render from the synced catalog and fail if any skill is stale,
+# orphaned, or leaks a private token (the generator's --check). This keeps the
+# committed skills/ tree honest — it's generated, never hand-edited.
+#
+# Publishing is MANUAL (workflow_dispatch) and DRAFT-FIRST by default. ClawHub
+# publish semantics (and the `public_skill_key` field placement) must be validated
+# once before the first real publish — see README "Known TBV".
+
+name: ritual-open-skills
+
+on:
+  pull_request:
+    paths:
+      - "skills/**"
+      - "drafts/**"
+      - "canonical/**"
+      - "merge-sources/**"
+      - "scripts/**"
+      - "catalog.md"
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "draft (unlisted) or live"
+        required: true
+        default: "draft"
+        type: choice
+        options: ["draft", "live"]
+
+jobs:
+  check:
+    name: in sync with the catalog + clawhub dry-run validates
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22 # clawhub requires node >=22
+      - name: Render-guard (stale / orphan / leak)
+        run: node scripts/generate-openclaw-skills.mjs --check
+      - name: clawhub publish --dry-run (every published skill validates)
+        run: |
+          npm install -g clawhub
+          fail=0
+          for d in skills/*/; do
+            if clawhub publish "$d" --dry-run --json | grep -q '"ok": true'; then
+              echo "ok   $(basename "$d")"
+            else
+              echo "FAIL $(basename "$d")"; fail=1
+            fi
+          done
+          exit $fail
+
+  publish:
+    name: Publish the v1 allowlist to ClawHub (owner=ritual)
+    needs: check
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    env:
+      # Add a ClawHub API token as the repo secret CLAWHUB_TOKEN (Settings →
+      # Secrets → Actions). Get one locally with: clawhub login && clawhub token.
+      CLAWHUB_TOKEN: ${{ secrets.CLAWHUB_TOKEN }}
+      OWNER: ritual # the ClawHub publisher handle (org)
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22 # clawhub requires node >=22
+      - name: Publish (only the v1 allowlist; dry-run unless mode=live)
+        run: |
+          if [ -z "$CLAWHUB_TOKEN" ]; then
+            echo "::error::CLAWHUB_TOKEN secret is not set — add it before publishing."; exit 1
+          fi
+          npm install -g clawhub
+          clawhub login --token "$CLAWHUB_TOKEN"
+          DRY="--dry-run"; [ "${{ github.event.inputs.mode }}" = "live" ] && DRY=""
+          SHA="${{ github.sha }}"
+          for s in $(node -p "require('./canonical/v1-publish-allowlist.json').skills.join('\n')"); do
+            echo "publishing skills/$s (owner=$OWNER) $DRY"
+            clawhub publish "skills/$s" --owner "$OWNER" $DRY \
+              --source-repo "${{ github.repository }}" --source-commit "$SHA" --source-path "skills/$s"
+          done

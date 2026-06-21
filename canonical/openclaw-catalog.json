@@ -1,0 +1,1686 @@
+{
+  "_generated": "Generated from the Ritual catalog; consumed by scripts/generate-openclaw-skills.mjs. Public-safe: internal taxonomy + server resolver are stripped; published skills carry only the opaque public_skill_key.",
+  "sourceSha": "8b188e2fc3940c6f",
+  "skillCount": 69,
+  "standaloneCount": 24,
+  "discoveryCount": 45,
+  "byFunction": {
+    "development": 26,
+    "product": 24,
+    "marketing": 19
+  },
+  "skills": [
+    {
+      "publicSkillKey": "ros_add_tests_v1",
+      "taskName": "add-tests",
+      "title": "Add tests or quality gates",
+      "emoji": null,
+      "function": "development",
+      "mode": "discovery",
+      "deliverableTemplate": "Test Strategy Brief",
+      "sections": [
+        "testing goals",
+        "coverage assessment",
+        "test inventory",
+        "test approach",
+        "tooling and fixtures",
+        "gating strategy"
+      ],
+      "composedSectionCount": 15
+    },
+    {
+      "publicSkillKey": "ros_analyze_product_performance_v1",
+      "taskName": "analyze-product-performance",
+      "title": "Analyze product performance",
+      "emoji": null,
+      "function": "product",
+      "mode": "discovery",
+      "deliverableTemplate": "Performance Readout",
+      "sections": [
+        "readout summary",
+        "metrics spec",
+        "instrumentation",
+        "analysis",
+        "segmentation",
+        "findings",
+        "recommendations"
+      ],
+      "composedSectionCount": 19
+    },
+    {
+      "publicSkillKey": "ros_api_change_review_v1",
+      "taskName": "api-change-review",
+      "title": "API change review",
+      "emoji": "🔌",
+      "function": "development",
+      "mode": "standalone",
+      "summary": "Review an API change for compatibility, validation, auth, error shape, idempotency, and observability, and classify it as additive, behavior-changing, or breaking.",
+      "examplePrompt": "Use api-change-review on this diff: classify the change, flag breaking behavior and the callers it affects, and give me a migration + rollout plan with the tests to add.",
+      "recipe": [
+        "Identify the contract surface: request, response, auth, errors, side effects, and compatibility expectations.",
+        "Classify the change as additive, behavior-changing, breaking, or ambiguous.",
+        "Review input validation/schema evolution, authorization and tenant/data boundaries, error-shape consistency, idempotency/retry, and observability.",
+        "Assess backward compatibility and the migration plan.",
+        "Prefer the smallest safe contract change; avoid speculative versioning or framework rewrites.",
+        "Define verification: unit, contract, integration tests, and rollout checks."
+      ],
+      "doneCriteria": "A contract verdict (safe / risky / breaking / unclear), required changes, compatibility risks, a minimal test plan, and rollout notes.",
+      "ritualDiscoveryWhen": [
+        "the review needs all known clients/callers of the endpoint",
+        "prior API conventions or related migrations/feature flags apply",
+        "there are production incidents connected to this endpoint"
+      ],
+      "ritualExplorationWhen": [
+        "a breaking change needs a rollout decision across teams",
+        "the migration path is contested and needs a recommendation owners align on"
+      ],
+      "ritualAdds": [
+        "all known clients/callers and their compatibility risk",
+        "prior conventions, related migrations, and incidents",
+        "a recommended rollout/migration plan"
+      ],
+      "ritualArtifactExample": "an API migration recommendation with affected callers, rollout options, compatibility risks, and a decision-ready summary"
+    },
+    {
+      "publicSkillKey": "ros_author_skill_flow_v1",
+      "taskName": "author-skill-flow",
+      "title": "Author or revise an agent skill flow",
+      "emoji": null,
+      "function": "development",
+      "mode": "discovery",
+      "deliverableTemplate": "Feature Specification (Agentic Coding)",
+      "sections": [
+        "flow overview",
+        "step sequence",
+        "gate definitions",
+        "state and transitions",
+        "tooling integration",
+        "rollout plan"
+      ],
+      "composedSectionCount": 21
+    },
+    {
+      "publicSkillKey": "ros_backend_test_plan_v1",
+      "taskName": "backend-test-plan",
+      "title": "Backend test plan",
+      "emoji": "🧪",
+      "function": "development",
+      "mode": "standalone",
+      "summary": "Turn a backend change into verifiable success criteria and a minimum useful test set across unit, integration, contract, and migration tests.",
+      "examplePrompt": "Use backend-test-plan for this change: turn it into success criteria and a minimum test set (unit, integration, contract, migration), with exact test names and the commands to run.",
+      "recipe": [
+        "Convert the change into verifiable success criteria.",
+        "Identify the minimum useful test set; avoid exhaustive combinatorial tests.",
+        "Prefer, in order: unit tests for pure logic/validation; integration tests for DB/queue/auth/external boundaries; contract tests for API/client compatibility; migration/dry-run checks for schema changes; operational checks for metrics/logs/alerts when behavior matters in production.",
+        "Include negative and edge cases only where they represent real risk.",
+        "Provide exact test names and fixtures when context allows."
+      ],
+      "doneCriteria": "Success criteria, the minimum test set, fixtures/mocks, commands to run, and the remaining coverage gaps.",
+      "ritualDiscoveryWhen": [
+        "test selection depends on existing test patterns and helpers you can't see",
+        "affected clients/callers or critical paths aren't visible",
+        "prior incidents should drive coverage"
+      ],
+      "ritualExplorationWhen": [
+        "the coverage bar is a decision (what risk warrants what tests)",
+        "you need a recommended test strategy the team adopts"
+      ],
+      "ritualAdds": [
+        "existing test patterns, helpers, and ownership metadata",
+        "affected callers and prior incidents",
+        "a recommended coverage strategy"
+      ],
+      "ritualArtifactExample": "a test-strategy recommendation mapping each success criterion to its tests, with affected callers, risk-driven coverage, and a decision-ready summary"
+    },
+    {
+      "publicSkillKey": "ros_build_agent_capability_v1",
+      "taskName": "build-agent-capability",
+      "title": "Build coding-agent capability",
+      "emoji": null,
+      "function": "development",
+      "mode": "discovery",
+      "deliverableTemplate": "Feature Specification (Agentic Coding)",
+      "sections": [
+        "capability overview",
+        "agent workflow",
+        "tool surface design",
+        "ergonomics and affordances",
+        "integration points",
+        "rollout plan"
+      ],
+      "composedSectionCount": 21
+    },
+    {
+      "publicSkillKey": "ros_build_backend_service_v1",
+      "taskName": "build-backend-service",
+      "title": "Build backend service / API",
+      "emoji": null,
+      "function": "development",
+      "mode": "discovery",
+      "deliverableTemplate": "Service Build Brief",
+      "sections": [
+        "service boundary",
+        "api contract",
+        "data model",
+        "transactions + consistency",
+        "scaling + performance",
+        "failure modes",
+        "service testing"
+      ],
+      "composedSectionCount": 22
+    },
+    {
+      "publicSkillKey": "ros_build_campaign_narrative_v1",
+      "taskName": "build-campaign-narrative",
+      "title": "Build campaign narrative",
+      "emoji": null,
+      "function": "marketing",
+      "mode": "discovery",
+      "deliverableTemplate": "Campaign Brief",
+      "sections": [
+        "campaign big idea",
+        "narrative arc",
+        "audience + insight",
+        "tone + voice",
+        "creative concept",
+        "key visuals + motifs",
+        "campaign manifesto"
+      ],
+      "composedSectionCount": 16
+    },
+    {
+      "publicSkillKey": "ros_build_channel_plan_v1",
+      "taskName": "build-channel-plan",
+      "title": "Build channel plan",
+      "emoji": null,
+      "function": "marketing",
+      "mode": "discovery",
+      "deliverableTemplate": "Channel Plan",
+      "sections": [
+        "channel objectives",
+        "audience + targeting",
+        "channel mix",
+        "budget allocation",
+        "campaign sequencing",
+        "conversion funnel",
+        "experiments + optimization",
+        "success metrics"
+      ],
+      "composedSectionCount": 22
+    },
+    {
+      "publicSkillKey": "ros_build_docs_site_v1",
+      "taskName": "build-docs-site",
+      "title": "Create documentation site / developer portal",
+      "emoji": null,
+      "function": "development",
+      "mode": "discovery",
+      "deliverableTemplate": "Documentation Site Brief",
+      "sections": [
+        "site scope + goals",
+        "tooling + framework",
+        "content pipeline",
+        "navigation + search",
+        "build + preview",
+        "site testing"
+      ],
+      "composedSectionCount": 21
+    },
+    {
+      "publicSkillKey": "ros_build_frontend_feature_v1",
+      "taskName": "build-frontend-feature",
+      "title": "Build frontend feature",
+      "emoji": null,
+      "function": "development",
+      "mode": "discovery",
+      "deliverableTemplate": "Frontend Feature Brief",
+      "sections": [
+        "feature scope + states",
+        "component architecture",
+        "ux state + data binding",
+        "performance budget",
+        "accessibility",
+        "frontend testing"
+      ],
+      "composedSectionCount": 21
+    },
+    {
+      "publicSkillKey": "ros_build_mcp_tool_v1",
+      "taskName": "build-mcp-tool",
+      "title": "Build or expose an MCP tool",
+      "emoji": null,
+      "function": "development",
+      "mode": "discovery",
+      "deliverableTemplate": "Platform Capability (Implementation Brief)",
+      "sections": [
+        "tool overview",
+        "tool contract",
+        "input/output schema",
+        "ergonomics and defaults",
+        "manifest and registration",
+        "rollout plan"
+      ],
+      "composedSectionCount": 21
+    },
+    {
+      "publicSkillKey": "ros_build_mock_prototype_v1",
+      "taskName": "build-mock-prototype",
+      "title": "Build mock prototype",
+      "emoji": null,
+      "function": "product",
+      "mode": "discovery",
+      "deliverableTemplate": "Mock Prototype Brief",
+      "sections": [
+        "prototype overview",
+        "flows and screens",
+        "interaction model",
+        "visual fidelity",
+        "content and data",
+        "handoff notes"
+      ],
+      "composedSectionCount": 16
+    },
+    {
+      "publicSkillKey": "ros_build_spike_v1",
+      "taskName": "build-spike",
+      "title": "Build technical spike",
+      "emoji": null,
+      "function": "development",
+      "mode": "discovery",
+      "deliverableTemplate": "Technical Spike Brief",
+      "sections": [
+        "spike question",
+        "approach explored",
+        "prototype findings",
+        "feasibility assessment",
+        "recommendation",
+        "open questions"
+      ],
+      "composedSectionCount": 18
+    },
+    {
+      "publicSkillKey": "ros_content_asset_review_v1",
+      "taskName": "content-asset-review",
+      "title": "Content asset review",
+      "emoji": "✍️",
+      "function": "marketing",
+      "mode": "standalone",
+      "summary": "Review a content asset (post, page, email) for audience fit, a single clear takeaway, a strong hook and CTA, credibility, and on-brand voice.",
+      "examplePrompt": "Use content-asset-review on this draft: name the audience and the one takeaway, check the hook and CTA, flag unbacked claims and filler, and give line-level fixes.",
+      "recipe": [
+        "Name the audience and the one thing they should take away; flag it if unclear.",
+        "Check the hook earns the next line; cut throat-clearing intros.",
+        "Confirm claims are specific and credible, with proof where it matters.",
+        "Check there's one clear, relevant call to action.",
+        "Flag jargon, filler, and passive constructions that dull the message.",
+        "Confirm voice and terminology are on-brand and consistent."
+      ],
+      "doneCriteria": "A view on whether the asset lands, the weakest passage, the credibility gaps, and concrete line-level fixes.",
+      "ritualDiscoveryWhen": [
+        "audience pains and proof points live in research you can't see",
+        "brand voice and prior assets live elsewhere",
+        "the campaign or messaging context applies"
+      ],
+      "ritualExplorationWhen": [
+        "the asset's goal or audience is unsettled",
+        "the underlying message is contested",
+        "you need a recommended content angle the team adopts"
+      ],
+      "ritualAdds": [
+        "audience research, proof points, and brand voice",
+        "the campaign and messaging context",
+        "a recommended angle and outline"
+      ],
+      "ritualArtifactExample": "a content recommendation with the audience takeaway, the angle, proof points, and a decision-ready summary"
+    },
+    {
+      "publicSkillKey": "ros_conversion_path_review_v1",
+      "taskName": "conversion-path-review",
+      "title": "Conversion path review",
+      "emoji": "🪜",
+      "function": "marketing",
+      "mode": "standalone",
+      "summary": "Review a landing page or conversion funnel for message match, a single clear action, friction points, credibility, and the highest-leverage fix.",
+      "examplePrompt": "Use conversion-path-review on this landing page: check message match, one primary action, friction points down the funnel, and name the single highest-leverage change and the metric it should move.",
+      "recipe": [
+        "Confirm the page matches the promise of the source (ad/email/link) — no message mismatch.",
+        "Check there's ONE primary action above the fold; flag competing CTAs.",
+        "Walk the funnel step by step and mark each friction or drop-off risk.",
+        "Confirm value and proof appear before the ask, not after.",
+        "Flag form length, unclear copy, and trust gaps that cost conversions.",
+        "Name the single highest-leverage change and the metric it should move."
+      ],
+      "doneCriteria": "A ranked list of friction points, the message-match gaps, and the one highest-leverage change with the metric it targets.",
+      "ritualDiscoveryWhen": [
+        "drop-off data and prior tests live in analytics you can't see",
+        "the upstream traffic source and audience intent live elsewhere",
+        "related funnel experiments apply"
+      ],
+      "ritualExplorationWhen": [
+        "the conversion goal or audience is unsettled",
+        "the fix spans product + marketing and needs alignment",
+        "you need a recommended optimization plan the team commits to"
+      ],
+      "ritualAdds": [
+        "funnel drop-off data and prior test results",
+        "upstream traffic and audience intent",
+        "a recommended, prioritized optimization plan"
+      ],
+      "ritualArtifactExample": "a conversion recommendation with ranked friction fixes, the message-match correction, and a decision-ready summary"
+    },
+    {
+      "publicSkillKey": "ros_create_content_plan_v1",
+      "taskName": "create-content-plan",
+      "title": "Create content plan",
+      "emoji": null,
+      "function": "marketing",
+      "mode": "discovery",
+      "deliverableTemplate": "Content Plan",
+      "sections": [
+        "content goals",
+        "audience + journey",
+        "themes + topics",
+        "content formats",
+        "editorial calendar",
+        "distribution plan",
+        "production workflow",
+        "success metrics"
+      ],
+      "composedSectionCount": 20
+    },
+    {
+      "publicSkillKey": "ros_create_customer_proof_v1",
+      "taskName": "create-customer-proof",
+      "title": "Create customer proof / case study",
+      "emoji": null,
+      "function": "marketing",
+      "mode": "discovery",
+      "deliverableTemplate": "Customer Proof Brief",
+      "sections": [
+        "proof summary",
+        "customer profile",
+        "challenge + context",
+        "solution + approach",
+        "results + outcomes",
+        "customer quote",
+        "story narrative",
+        "asset formats"
+      ],
+      "composedSectionCount": 17
+    },
+    {
+      "publicSkillKey": "ros_create_launch_brief_v1",
+      "taskName": "create-launch-brief",
+      "title": "Create launch brief",
+      "emoji": null,
+      "function": "marketing",
+      "mode": "discovery",
+      "deliverableTemplate": "Launch Brief",
+      "sections": [
+        "launch summary",
+        "positioning + messaging",
+        "target audience",
+        "launch goals",
+        "key messages",
+        "launch tiering",
+        "sales enablement",
+        "launch timeline"
+      ],
+      "composedSectionCount": 27
+    },
+    {
+      "publicSkillKey": "ros_create_messaging_framework_v1",
+      "taskName": "create-messaging-framework",
+      "title": "Create messaging framework",
+      "emoji": null,
+      "function": "marketing",
+      "mode": "discovery",
+      "deliverableTemplate": "Messaging Framework",
+      "sections": [
+        "core value proposition",
+        "audience + segments",
+        "message pillars",
+        "supporting claims",
+        "proof points",
+        "elevator pitch",
+        "messaging matrix"
+      ],
+      "composedSectionCount": 19
+    },
+    {
+      "publicSkillKey": "ros_create_prd_v1",
+      "taskName": "create-prd",
+      "title": "Create PRD",
+      "emoji": null,
+      "function": "product",
+      "mode": "discovery",
+      "deliverableTemplate": "PRD",
+      "sections": [
+        "goals",
+        "target user",
+        "requirements",
+        "user stories",
+        "non-goals",
+        "success metrics",
+        "scope cut lines",
+        "open questions"
+      ],
+      "composedSectionCount": 24
+    },
+    {
+      "publicSkillKey": "ros_customer_problem_review_v1",
+      "taskName": "customer-problem-review",
+      "title": "Customer problem review",
+      "emoji": "🔍",
+      "function": "product",
+      "mode": "standalone",
+      "summary": "Pressure-test a stated customer problem for specificity, evidence, and whether it's a real problem worth solving — not a solution in disguise.",
+      "examplePrompt": "Use customer-problem-review on this problem statement: separate problem from solution, weigh the evidence vs assumptions, and tell me the riskiest assumption to validate first.",
+      "recipe": [
+        "Restate the problem from the customer's point of view, in their words where available.",
+        "Separate the problem from the proposed solution; flag where they're conflated.",
+        "Check for evidence: who has this problem, how often, and how painful — or note it's an assumption.",
+        "Identify the current workaround and why it's insufficient.",
+        "State what would have to be true for this to be worth solving now.",
+        "Surface the riskiest assumption to validate first."
+      ],
+      "doneCriteria": "A crisp problem statement, the evidence vs assumptions split, the riskiest assumption, and what to validate next.",
+      "ritualDiscoveryWhen": [
+        "the evidence (interviews, support tickets, usage) lives in sources you can't see",
+        "prior research or decisions on this problem exist",
+        "related customer feedback is scattered across the workspace"
+      ],
+      "ritualExplorationWhen": [
+        "the problem needs framing and key questions before any solution",
+        "stakeholders disagree on whether it's worth solving",
+        "you need a recommendation to commit or drop it"
+      ],
+      "ritualAdds": [
+        "customer feedback, interviews, and usage evidence",
+        "prior research and decisions",
+        "a recommended problem framing and next step"
+      ],
+      "ritualArtifactExample": "a problem-definition recommendation with the evidence-backed problem statement, riskiest assumptions, and a validate-or-commit summary"
+    },
+    {
+      "publicSkillKey": "ros_database_migration_risk_review_v1",
+      "taskName": "database-migration-risk-review",
+      "title": "Database migration risk review",
+      "emoji": "🗄️",
+      "function": "development",
+      "mode": "standalone",
+      "summary": "Classify a database migration and surface production risks — locks, compatibility, backfills, rollback — and prefer expand-contract sequencing.",
+      "examplePrompt": "Use database-migration-risk-review on this migration: classify it, flag locks/compat/backfill/rollback risks, propose a safer expand-contract sequence, and the verification + monitoring.",
+      "recipe": [
+        "Classify the migration: additive schema, destructive schema, index, data backfill, constraint, enum, or type change.",
+        "Identify production risks: locks/long operations, backward/forward compatibility, nullable/default behavior, data volume/backfill batching, rollback path, replication/read-model effects.",
+        "Prefer expand-contract sequencing for risky changes.",
+        "Do not recommend destructive cleanup in the same deploy unless explicitly asked and proven safe.",
+        "Define verification: dry run, explain plan, affected tests, canary, and monitoring."
+      ],
+      "doneCriteria": "A risk level, the unsafe operations, a safer sequence, a backfill/rollback plan, and verification + monitoring.",
+      "ritualDiscoveryWhen": [
+        "risk depends on query/model usage across services you can't see",
+        "background jobs, ETL, dashboards, or analytics depend on the schema",
+        "prior migration incidents or conventions apply"
+      ],
+      "ritualExplorationWhen": [
+        "the rollout/sequencing is a cross-team decision",
+        "you need a recommended readiness gate owners sign off on"
+      ],
+      "ritualAdds": [
+        "query/model usage and downstream consumers across services",
+        "prior migration incidents and deploy-sequencing conventions",
+        "a recommended readiness plan with rollback criteria"
+      ],
+      "ritualArtifactExample": "a migration-readiness note with rollback criteria, affected services, owner input, and a launch recommendation"
+    },
+    {
+      "publicSkillKey": "ros_debug_production_issue_v1",
+      "taskName": "debug-production-issue",
+      "title": "Debug production issue",
+      "emoji": null,
+      "function": "development",
+      "mode": "discovery",
+      "deliverableTemplate": "Debugging Brief",
+      "sections": [
+        "incident summary",
+        "symptoms",
+        "investigation timeline",
+        "root cause",
+        "hypotheses",
+        "proposed fix",
+        "rollback plan"
+      ],
+      "composedSectionCount": 22
+    },
+    {
+      "publicSkillKey": "ros_debug_typescript_error_v1",
+      "taskName": "debug-typescript-error",
+      "title": "Debug a TypeScript error",
+      "emoji": "🧩",
+      "function": "development",
+      "mode": "standalone",
+      "summary": "Translate a TypeScript compiler error into plain English, find the smallest type boundary at fault, and prefer the smallest safe fix over suppression.",
+      "examplePrompt": "Use debug-typescript-error on this error: explain it in plain English, find the smallest type boundary at fault, and give the smallest safe fix (no `any`/casts) plus the verify command.",
+      "recipe": [
+        "Translate the compiler error into plain English.",
+        "Locate the smallest type boundary causing the mismatch.",
+        "Prefer fixing the source of truth over suppressing the error.",
+        "Avoid `any`, broad casts, and non-null assertions unless the tradeoff is explicitly accepted.",
+        "Offer the smallest change first, then an optional stronger model if the code suggests recurring risk.",
+        "Verify with `tsc --noEmit`, the project typecheck, or the specific package typecheck command."
+      ],
+      "doneCriteria": "The error's meaning, root cause, smallest safe fix, why broader alternatives were rejected, and the verification command.",
+      "ritualDiscoveryWhen": [
+        "the fix depends on generated API types or schema source you can't see",
+        "shared component/prop contracts or call sites across the repo are involved",
+        "project conventions (branded types, zod, codegen, API clients) aren't visible"
+      ],
+      "ritualExplorationWhen": [
+        "the error reveals a contract decision (who owns the type, where it should live)",
+        "a recurring class of errors needs a recommended fix the team adopts"
+      ],
+      "ritualAdds": [
+        "the generated types / schema source of truth",
+        "shared contracts and the call sites that depend on them",
+        "a recommended fix for the recurring pattern"
+      ],
+      "ritualArtifactExample": "a type-contract recommendation identifying the source of truth, affected call sites, and the adopted fix, with a decision-ready summary"
+    },
+    {
+      "publicSkillKey": "ros_define_customer_problem_v1",
+      "taskName": "define-customer-problem",
+      "title": "Define customer problem",
+      "emoji": null,
+      "function": "product",
+      "mode": "discovery",
+      "deliverableTemplate": "Problem Brief",
+      "sections": [
+        "problem statement",
+        "affected customer",
+        "problem evidence",
+        "impact framing",
+        "constraints",
+        "non-goals",
+        "open questions"
+      ],
+      "composedSectionCount": 19
+    },
+    {
+      "publicSkillKey": "ros_define_mvp_scope_v1",
+      "taskName": "define-mvp-scope",
+      "title": "Define MVP scope",
+      "emoji": null,
+      "function": "product",
+      "mode": "discovery",
+      "deliverableTemplate": "MVP Scope Brief",
+      "sections": [
+        "mvp goal",
+        "core scope",
+        "must-haves",
+        "scope cut lines",
+        "non-goals",
+        "success metrics",
+        "open questions"
+      ],
+      "composedSectionCount": 19
+    },
+    {
+      "publicSkillKey": "ros_define_product_positioning_v1",
+      "taskName": "define-product-positioning",
+      "title": "Define product positioning",
+      "emoji": null,
+      "function": "marketing",
+      "mode": "discovery",
+      "deliverableTemplate": "Positioning Brief",
+      "sections": [
+        "positioning statement",
+        "target buyer",
+        "buyer pain + triggers",
+        "value proposition",
+        "differentiation",
+        "message pillars",
+        "proof requirements"
+      ],
+      "composedSectionCount": 22
+    },
+    {
+      "publicSkillKey": "ros_define_prototype_scope_v1",
+      "taskName": "define-prototype-scope",
+      "title": "Define prototype scope",
+      "emoji": null,
+      "function": "product",
+      "mode": "discovery",
+      "deliverableTemplate": "Prototype Scope Brief",
+      "sections": [
+        "scope summary",
+        "goals and questions",
+        "in scope",
+        "out of scope",
+        "constraints",
+        "acceptance criteria"
+      ],
+      "composedSectionCount": 15
+    },
+    {
+      "publicSkillKey": "ros_design_growth_experiment_v1",
+      "taskName": "design-growth-experiment",
+      "title": "Design growth experiment",
+      "emoji": null,
+      "function": "marketing",
+      "mode": "discovery",
+      "deliverableTemplate": "Growth Experiment Brief",
+      "sections": [
+        "experiment summary",
+        "hypothesis",
+        "audience + segment",
+        "variant design",
+        "success metrics",
+        "test design",
+        "duration + sample",
+        "decision criteria"
+      ],
+      "composedSectionCount": 19
+    },
+    {
+      "publicSkillKey": "ros_design_lifecycle_sequence_v1",
+      "taskName": "design-lifecycle-sequence",
+      "title": "Design lifecycle sequence",
+      "emoji": null,
+      "function": "marketing",
+      "mode": "discovery",
+      "deliverableTemplate": "Lifecycle Sequence Brief",
+      "sections": [
+        "sequence summary",
+        "audience + segments",
+        "lifecycle stages",
+        "trigger logic",
+        "message sequence",
+        "channel + cadence",
+        "activation goals",
+        "success metrics"
+      ],
+      "composedSectionCount": 20
+    },
+    {
+      "publicSkillKey": "ros_design_solution_concept_v1",
+      "taskName": "design-solution-concept",
+      "title": "Design solution concept",
+      "emoji": null,
+      "function": "product",
+      "mode": "discovery",
+      "deliverableTemplate": "Solution Concept Brief",
+      "sections": [
+        "concept overview",
+        "user flows",
+        "information architecture",
+        "interaction model",
+        "key screens",
+        "design principles",
+        "open design questions"
+      ],
+      "composedSectionCount": 19
+    },
+    {
+      "publicSkillKey": "ros_design_technical_approach_v1",
+      "taskName": "design-technical-approach",
+      "title": "Design technical approach",
+      "emoji": null,
+      "function": "development",
+      "mode": "discovery",
+      "deliverableTemplate": "Technical Design Brief",
+      "sections": [
+        "problem + goals",
+        "proposed approach",
+        "alternatives considered",
+        "risk + mitigations",
+        "sequencing + milestones",
+        "review + sign-off"
+      ],
+      "composedSectionCount": 21
+    },
+    {
+      "publicSkillKey": "ros_frame_product_opportunity_v1",
+      "taskName": "frame-product-opportunity",
+      "title": "Frame product opportunity",
+      "emoji": null,
+      "function": "product",
+      "mode": "discovery",
+      "deliverableTemplate": "Opportunity Brief",
+      "sections": [
+        "opportunity statement",
+        "target customer",
+        "value hypothesis",
+        "scope frame",
+        "trade-offs",
+        "success outcomes",
+        "open questions"
+      ],
+      "composedSectionCount": 22
+    },
+    {
+      "publicSkillKey": "ros_frame_prototype_hypothesis_v1",
+      "taskName": "frame-prototype-hypothesis",
+      "title": "Frame prototype hypothesis",
+      "emoji": null,
+      "function": "product",
+      "mode": "discovery",
+      "deliverableTemplate": "Prototype Brief",
+      "sections": [
+        "hypothesis statement",
+        "problem context",
+        "value bet",
+        "scope of the bet",
+        "success criteria",
+        "decision at stake"
+      ],
+      "composedSectionCount": 17
+    },
+    {
+      "publicSkillKey": "ros_generate_storybook_story_v1",
+      "taskName": "generate-storybook-story",
+      "title": "Generate a Storybook story",
+      "emoji": "📖",
+      "function": "development",
+      "mode": "standalone",
+      "summary": "Write Storybook stories for a component's meaningful user-facing states with minimal, readable fixtures.",
+      "examplePrompt": "Use generate-storybook-story for this component: write stories for its meaningful states (default, loading, empty, error, long content) with minimal fixtures, and the command to verify them.",
+      "recipe": [
+        "Infer the component's required props and meaningful states.",
+        "Create stories for realistic user-facing states, not exhaustive combinatorial permutations.",
+        "Cover default, loading, empty, error, disabled, long-content, and responsive states only when relevant.",
+        "Keep fixtures minimal and readable; match the project's visible Storybook style.",
+        "Add interaction/play tests only when behavior matters and conventions are visible.",
+        "Verify by running Storybook, the interaction test, and a visual diff if available."
+      ],
+      "doneCriteria": "A story list with rationale, the story code, fixture notes, and the verification steps.",
+      "ritualDiscoveryWhen": [
+        "the existing story format, decorators, or design tokens aren't visible",
+        "mock API data or fixtures used elsewhere are needed",
+        "the product's acceptance states live in a spec"
+      ],
+      "ritualExplorationWhen": [
+        "which states to standardize across components is an open decision",
+        "you need a recommended story/coverage convention the team adopts"
+      ],
+      "ritualAdds": [
+        "the project's story format, decorators, and design tokens",
+        "shared fixtures and acceptance states",
+        "a recommended story-coverage convention"
+      ],
+      "ritualArtifactExample": "a story-coverage recommendation listing the canonical states, fixtures, and conventions, with a decision-ready summary"
+    },
+    {
+      "publicSkillKey": "ros_growth_experiment_review_v1",
+      "taskName": "growth-experiment-review",
+      "title": "Growth experiment review",
+      "emoji": "📈",
+      "function": "marketing",
+      "mode": "standalone",
+      "summary": "Review a growth experiment for a clear hypothesis tied to a lever, a pre-set decision rule, adequate power, and protection against vanity wins.",
+      "examplePrompt": "Use growth-experiment-review on this experiment: check the hypothesis names a growth lever and effect, the decision rule is pre-set, it's powered, and a guardrail protects against a vanity win.",
+      "recipe": [
+        "Confirm the hypothesis names the lever (acquisition/activation/retention/referral/revenue) and expected effect.",
+        "Check the primary metric and decision rule are set before launch.",
+        "Sanity-check audience size and duration for a readable result.",
+        "Look for validity traps: novelty, seasonality, cannibalization, selection bias.",
+        "Confirm a guardrail metric protects against a harmful or vanity win.",
+        "State what a positive result would and would NOT prove."
+      ],
+      "doneCriteria": "A view on whether the experiment can yield a trustworthy decision, the design gaps, the validity risks, and the pre-set decision rule.",
+      "ritualDiscoveryWhen": [
+        "baseline rates and prior growth tests live in analytics you can't see",
+        "the funnel and audience realities live elsewhere",
+        "related experiments already answered part of this"
+      ],
+      "ritualExplorationWhen": [
+        "the growth lever to pull is itself unsettled",
+        "stakeholders disagree on the decision rule",
+        "you need a recommended experiment the team commits to"
+      ],
+      "ritualAdds": [
+        "baseline rates and prior experiment results",
+        "funnel and audience context",
+        "a recommended, adequately powered design"
+      ],
+      "ritualArtifactExample": "a growth-experiment recommendation with the lever, hypothesis, pre-set decision rule, and a decision-ready summary"
+    },
+    {
+      "publicSkillKey": "ros_improve_conversion_path_v1",
+      "taskName": "improve-conversion-path",
+      "title": "Improve conversion path",
+      "emoji": null,
+      "function": "marketing",
+      "mode": "discovery",
+      "deliverableTemplate": "Conversion Optimization Brief",
+      "sections": [
+        "optimization summary",
+        "funnel analysis",
+        "drop-off diagnosis",
+        "conversion hypotheses",
+        "optimization backlog",
+        "test plan",
+        "expected impact",
+        "success metrics"
+      ],
+      "composedSectionCount": 20
+    },
+    {
+      "publicSkillKey": "ros_improve_performance_v1",
+      "taskName": "improve-performance",
+      "title": "Improve performance or reliability",
+      "emoji": null,
+      "function": "development",
+      "mode": "discovery",
+      "deliverableTemplate": "Performance Brief",
+      "sections": [
+        "performance goals",
+        "current baseline",
+        "bottleneck analysis",
+        "optimization plan",
+        "implementation approach",
+        "validation method"
+      ],
+      "composedSectionCount": 18
+    },
+    {
+      "publicSkillKey": "ros_instrument_product_metrics_v1",
+      "taskName": "instrument-product-metrics",
+      "title": "Instrument product metrics",
+      "emoji": null,
+      "function": "product",
+      "mode": "discovery",
+      "deliverableTemplate": "Metrics Spec",
+      "sections": [
+        "measurement goals",
+        "metric definitions",
+        "event taxonomy",
+        "instrumentation plan",
+        "data quality checks",
+        "ownership",
+        "open questions"
+      ],
+      "composedSectionCount": 16
+    },
+    {
+      "publicSkillKey": "ros_integrate_api_v1",
+      "taskName": "integrate-api",
+      "title": "Integrate external or internal API",
+      "emoji": null,
+      "function": "development",
+      "mode": "discovery",
+      "deliverableTemplate": "Integration Brief",
+      "sections": [
+        "integration scope",
+        "api contract mapping",
+        "data mapping + transforms",
+        "error + retry handling",
+        "failure modes",
+        "integration testing"
+      ],
+      "composedSectionCount": 15
+    },
+    {
+      "publicSkillKey": "ros_launch_brief_review_v1",
+      "taskName": "launch-brief-review",
+      "title": "Launch brief review",
+      "emoji": "🚀",
+      "function": "marketing",
+      "mode": "standalone",
+      "summary": "Review a go-to-market launch brief for a clear audience, goal, message, channel plan, and success metric — and surface what's missing before launch.",
+      "examplePrompt": "Use launch-brief-review on this GTM brief: check the goal is measurable, the audience and core message are clear, the channel plan has owners/dates, and surface the biggest gap.",
+      "recipe": [
+        "Confirm the launch goal is specific and measurable, not 'create awareness'.",
+        "Check the target audience and the single core message are clear and consistent.",
+        "Confirm the channel plan fits where the audience actually is, with owners and dates.",
+        "Check the success metric and baseline are defined, with a read-out plan.",
+        "Surface dependencies (assets, enablement, approvals) and their status.",
+        "Flag the biggest gap or risk to the launch landing."
+      ],
+      "doneCriteria": "A view on launch readiness, the missing pieces by area, the dependency risks, and the top gap to close.",
+      "ritualDiscoveryWhen": [
+        "audience and channel data live in analytics you can't see",
+        "assets, enablement, and approvals live with other teams",
+        "prior launch results apply"
+      ],
+      "ritualExplorationWhen": [
+        "the launch goal or audience is contested",
+        "cross-functional alignment is needed before commit",
+        "you need a recommendation leadership signs off on"
+      ],
+      "ritualAdds": [
+        "audience/channel data and prior launch results",
+        "cross-functional status on assets and enablement",
+        "a recommended launch plan"
+      ],
+      "ritualArtifactExample": "a launch-plan recommendation with the goal, audience, core message, channel plan, success metric, and a decision-ready summary"
+    },
+    {
+      "publicSkillKey": "ros_lifecycle_sequence_review_v1",
+      "taskName": "lifecycle-sequence-review",
+      "title": "Lifecycle sequence review",
+      "emoji": "📨",
+      "function": "marketing",
+      "mode": "standalone",
+      "summary": "Review a lifecycle or onboarding email/message sequence for a clear goal per message, the right trigger and timing, value before ask, and a working exit.",
+      "examplePrompt": "Use lifecycle-sequence-review on this sequence: check each message has one job, triggers/timing are behavior-based, value comes before the ask, and exit/suppression rules exist.",
+      "recipe": [
+        "Confirm the sequence has one overall goal and each message has a single job toward it.",
+        "Check triggers and timing are behavior-based where possible, not arbitrary delays.",
+        "Confirm each message leads with value before asking for action.",
+        "Check segmentation/personalization is meaningful, not token-merge-only.",
+        "Confirm exit and suppression rules exist (goal met, unsubscribe, do-not-contact).",
+        "Flag the message most likely to cause drop-off or fatigue."
+      ],
+      "doneCriteria": "A view on whether the sequence drives its goal, the timing/trigger gaps, the value-vs-ask balance, and the highest-risk message.",
+      "ritualDiscoveryWhen": [
+        "engagement and conversion data per step live in analytics you can't see",
+        "segment definitions and prior sequences live elsewhere",
+        "the lifecycle stage model applies"
+      ],
+      "ritualExplorationWhen": [
+        "the sequence goal or target segment is unsettled",
+        "the lifecycle strategy spans teams and needs alignment",
+        "you need a recommended sequence the team adopts"
+      ],
+      "ritualAdds": [
+        "per-step engagement data and prior sequence results",
+        "segment definitions and lifecycle strategy",
+        "a recommended sequence with triggers and timing"
+      ],
+      "ritualArtifactExample": "a lifecycle recommendation with the per-message goals, triggers, timing, exit rules, and a decision-ready summary"
+    },
+    {
+      "publicSkillKey": "ros_messaging_framework_review_v1",
+      "taskName": "messaging-framework-review",
+      "title": "Messaging framework review",
+      "emoji": "💬",
+      "function": "marketing",
+      "mode": "standalone",
+      "summary": "Review a messaging framework for audience fit, a clear hierarchy from value to proof, consistency, and resonance — before it cascades into assets.",
+      "examplePrompt": "Use messaging-framework-review on this framework: check each message ladders from value to proof, is in the audience's language, and flag contradictions and parity claims.",
+      "recipe": [
+        "Confirm each message ladders from a value prop down to supporting points and proof.",
+        "Check messages are written for the audience's language, not internal vocabulary.",
+        "Flag overlapping or contradictory messages that will confuse downstream assets.",
+        "Confirm differentiation is present, not parity claims everyone makes.",
+        "Check tone and terminology are consistent across pillars.",
+        "Surface the message most likely to fall flat and why."
+      ],
+      "doneCriteria": "A view on the framework's clarity and hierarchy, the contradictions, the parity claims, and the weakest message.",
+      "ritualDiscoveryWhen": [
+        "audience language and objections live in research you can't see",
+        "proof points and prior messaging exist elsewhere",
+        "related positioning decisions apply"
+      ],
+      "ritualExplorationWhen": [
+        "the core message is contested across stakeholders",
+        "the audience or positioning underneath is unsettled",
+        "you need a recommendation the team adopts"
+      ],
+      "ritualAdds": [
+        "audience research, objections, and proof points",
+        "stakeholder input and prior positioning",
+        "a recommended message hierarchy"
+      ],
+      "ritualArtifactExample": "a messaging recommendation with the value-to-proof hierarchy, audience-fit fixes, and a decision-ready summary"
+    },
+    {
+      "publicSkillKey": "ros_mvp_scope_review_v1",
+      "taskName": "mvp-scope-review",
+      "title": "MVP scope review",
+      "emoji": "✂️",
+      "function": "product",
+      "mode": "standalone",
+      "summary": "Review a proposed MVP scope for the smallest thing that tests the core hypothesis — explicit cuts, a clear learning goal, and no gold-plating.",
+      "examplePrompt": "Use mvp-scope-review on this MVP: state the core hypothesis, check the scope is the smallest build that tests it, list the cuts, flag gold-plating, and name the success/kill signal.",
+      "recipe": [
+        "State the core hypothesis the MVP is meant to test; flag it if it's missing.",
+        "Check the scope is the smallest build that produces that learning.",
+        "List what's explicitly cut and confirm the cuts don't break the core test.",
+        "Flag gold-plating — polish or breadth that doesn't serve the hypothesis.",
+        "Confirm there's a defined success/kill signal for the experiment.",
+        "Surface the assumptions the MVP does NOT test (the residual risk)."
+      ],
+      "doneCriteria": "A leaner scope proposal, the explicit cuts, the learning goal and success signal, and the residual untested risk.",
+      "ritualDiscoveryWhen": [
+        "the hypothesis depends on customer evidence or prior experiments you can't see",
+        "technical feasibility of cuts lives with engineering",
+        "related scope decisions exist"
+      ],
+      "ritualExplorationWhen": [
+        "the core hypothesis itself is unclear and needs framing",
+        "stakeholders disagree on what 'minimum' means",
+        "you need a recommendation the team commits to"
+      ],
+      "ritualAdds": [
+        "customer evidence and prior experiment results",
+        "feasibility input on proposed cuts",
+        "a recommended minimum scope and success signal"
+      ],
+      "ritualArtifactExample": "an MVP-scope recommendation with the core hypothesis, the explicit cuts, the success/kill signal, and a decision-ready summary"
+    },
+    {
+      "publicSkillKey": "ros_performance_regression_triage_v1",
+      "taskName": "performance-regression-triage",
+      "title": "Performance regression triage",
+      "emoji": "📉",
+      "function": "development",
+      "mode": "standalone",
+      "summary": "Triage a performance regression from concrete evidence — latency percentiles, error rate, resource and DB metrics, recent deploys — separate symptoms from hypotheses, and recommend one measurement before one fix.",
+      "examplePrompt": "Use performance-regression-triage on this regression: from the latency percentiles, error rate, and recent deploys, rank the likely causes, name the first measurement to run, and the smallest likely fix.",
+      "recipe": [
+        "Extract concrete evidence: endpoint/job, time window, p50/p95/p99, error rate, throughput, CPU/memory, DB metrics, and recent deploys.",
+        "Separate symptoms from hypotheses.",
+        "Check likely causes: N+1 or missing indexes, payload/serialization cost, cache miss/stampede, dependency latency, queue backlog/concurrency, lock contention/transaction scope.",
+        "Recommend one measurement before one fix; avoid speculative rewrites.",
+        "Define verification: before/after metrics, load test, explain plan, trace comparison, or canary."
+      ],
+      "doneCriteria": "Known evidence, top hypotheses ranked, the first measurement to run, the smallest likely fix, and the verification plan.",
+      "ritualDiscoveryWhen": [
+        "triage needs recent deploy/change correlation you can't see",
+        "incident history, runbooks, dashboards, or traces apply",
+        "ownership and service-dependency maps are needed"
+      ],
+      "ritualExplorationWhen": [
+        "the fix-vs-mitigate path is a decision with tradeoffs",
+        "you need a recommendation owners align on before a risky change"
+      ],
+      "ritualAdds": [
+        "recent deploys correlated to the regression",
+        "incident history, dashboards/traces, and ownership",
+        "a recommended remediation path"
+      ],
+      "ritualArtifactExample": "a regression-triage recommendation with ranked hypotheses, the correlated deploy, the chosen remediation, and a decision-ready summary"
+    },
+    {
+      "publicSkillKey": "ros_plan_implementation_v1",
+      "taskName": "plan-implementation",
+      "title": "Create implementation plan",
+      "emoji": null,
+      "function": "development",
+      "mode": "discovery",
+      "deliverableTemplate": "Implementation Plan",
+      "sections": [
+        "scope + assumptions",
+        "work breakdown",
+        "dependencies + ordering",
+        "implementation steps",
+        "testing + verification",
+        "rollout + done criteria"
+      ],
+      "composedSectionCount": 18
+    },
+    {
+      "publicSkillKey": "ros_plan_product_experiment_v1",
+      "taskName": "plan-product-experiment",
+      "title": "Plan product experiment",
+      "emoji": null,
+      "function": "product",
+      "mode": "discovery",
+      "deliverableTemplate": "Product Experiment Brief",
+      "sections": [
+        "hypothesis",
+        "experiment design",
+        "success criteria",
+        "scope",
+        "risks",
+        "decision plan",
+        "open questions"
+      ],
+      "composedSectionCount": 19
+    },
+    {
+      "publicSkillKey": "ros_plan_product_iteration_v1",
+      "taskName": "plan-product-iteration",
+      "title": "Plan product iteration",
+      "emoji": null,
+      "function": "product",
+      "mode": "discovery",
+      "deliverableTemplate": "Iteration Brief",
+      "sections": [
+        "iteration thesis",
+        "objectives",
+        "scope and priorities",
+        "trade-offs",
+        "sequencing",
+        "success criteria",
+        "risks"
+      ],
+      "composedSectionCount": 22
+    },
+    {
+      "publicSkillKey": "ros_positioning_review_v1",
+      "taskName": "positioning-review",
+      "title": "Positioning review",
+      "emoji": "🎯",
+      "function": "marketing",
+      "mode": "standalone",
+      "summary": "Review product positioning for a clear target, a sharp differentiated value, credible proof, and a named competitive alternative — not generic claims.",
+      "examplePrompt": "Use positioning-review on this positioning: check for a specific target, a differentiated and provable value, a named competitive alternative, and flag the riskiest unbacked claim.",
+      "recipe": [
+        "Confirm a specific target audience and the alternative they'd use instead.",
+        "Check the value is differentiated and falsifiable, not a generic 'best/fastest/easiest'.",
+        "Confirm each claim has proof (or flag it as an unbacked assertion).",
+        "Check the positioning is consistent across the headline, subhead, and body.",
+        "Flag jargon and feature-speak that should be reframed as outcomes.",
+        "Surface the riskiest claim that needs evidence before it ships."
+      ],
+      "doneCriteria": "A view on positioning clarity and differentiation, the unbacked claims, the consistency gaps, and the riskiest claim to validate.",
+      "ritualDiscoveryWhen": [
+        "differentiation depends on competitor claims or customer language you can't see",
+        "proof points and case studies live elsewhere",
+        "prior positioning decisions apply"
+      ],
+      "ritualExplorationWhen": [
+        "the positioning itself is contested across sales/product/marketing",
+        "the target segment is unsettled",
+        "you need a recommendation the team aligns on"
+      ],
+      "ritualAdds": [
+        "customer language, competitor claims, and proof points",
+        "cross-functional input on the segment",
+        "a recommended positioning statement"
+      ],
+      "ritualArtifactExample": "a positioning recommendation with the target, differentiated value, proof points, competitive frame, and a decision-ready summary"
+    },
+    {
+      "publicSkillKey": "ros_prd_review_v1",
+      "taskName": "prd-review",
+      "title": "PRD review",
+      "emoji": "📝",
+      "function": "product",
+      "mode": "standalone",
+      "summary": "Review a product requirements doc for a clear problem, defined users, explicit scope and non-goals, measurable success criteria, and surfaced open questions.",
+      "examplePrompt": "Use prd-review on this PRD: check it has a clear problem, specific user, explicit scope/non-goals, measurable success metrics, and surface the open questions that block a build decision.",
+      "recipe": [
+        "Restate the problem the PRD claims to solve in one sentence; flag it if you can't.",
+        "Check the target user and their job-to-be-done are specific, not generic.",
+        "Confirm scope and explicit non-goals are stated — what's deliberately out.",
+        "Check success metrics are measurable and tied to the problem, not vanity outputs.",
+        "Surface unstated assumptions, dependencies, and open questions that block a build decision.",
+        "Flag where requirements are solutions in disguise (constraining the how before the what is settled)."
+      ],
+      "doneCriteria": "A verdict (ready to build / needs work / blocked), the weakest section, the missing decisions, and the open questions to resolve first.",
+      "ritualDiscoveryWhen": [
+        "the PRD's claims depend on customer evidence or prior decisions you can't see",
+        "related specs, tickets, or roadmap context apply",
+        "the metrics need instrumentation that lives elsewhere"
+      ],
+      "ritualExplorationWhen": [
+        "the problem itself is still fuzzy and needs framing before requirements",
+        "scope is contested across stakeholders and needs alignment",
+        "you need a recommendation the team commits to"
+      ],
+      "ritualAdds": [
+        "customer evidence and prior decisions behind the problem",
+        "stakeholder input on scope and priorities",
+        "a sharpened problem statement and recommended scope"
+      ],
+      "ritualArtifactExample": "a PRD recommendation with a sharpened problem statement, agreed scope and non-goals, success metrics, and a decision-ready summary"
+    },
+    {
+      "publicSkillKey": "ros_prepare_release_v1",
+      "taskName": "prepare-release",
+      "title": "Prepare release / deployment",
+      "emoji": null,
+      "function": "development",
+      "mode": "discovery",
+      "deliverableTemplate": "Release Readiness Brief",
+      "sections": [
+        "release summary",
+        "change inventory",
+        "readiness checklist",
+        "deployment plan",
+        "rollback plan",
+        "post-release verification"
+      ],
+      "composedSectionCount": 18
+    },
+    {
+      "publicSkillKey": "ros_prepare_release_readiness_v1",
+      "taskName": "prepare-release-readiness",
+      "title": "Prepare release readiness",
+      "emoji": null,
+      "function": "product",
+      "mode": "discovery",
+      "deliverableTemplate": "Release Readiness Brief",
+      "sections": [
+        "release summary",
+        "scope and cut line",
+        "user value",
+        "go / no-go criteria",
+        "rollout plan",
+        "risks and trade-offs",
+        "open decisions"
+      ],
+      "composedSectionCount": 24
+    },
+    {
+      "publicSkillKey": "ros_prioritize_roadmap_v1",
+      "taskName": "prioritize-roadmap",
+      "title": "Prioritize roadmap",
+      "emoji": null,
+      "function": "product",
+      "mode": "discovery",
+      "deliverableTemplate": "Roadmap Prioritization Brief",
+      "sections": [
+        "prioritization goals",
+        "candidate items",
+        "scoring criteria",
+        "ranked sequence",
+        "trade-offs",
+        "non-goals",
+        "decision log"
+      ],
+      "composedSectionCount": 22
+    },
+    {
+      "publicSkillKey": "ros_product_experiment_review_v1",
+      "taskName": "product-experiment-review",
+      "title": "Product experiment review",
+      "emoji": "🧪",
+      "function": "product",
+      "mode": "standalone",
+      "summary": "Review a product experiment plan for a falsifiable hypothesis, a decision rule set in advance, adequate power, and protection against common validity traps.",
+      "examplePrompt": "Use product-experiment-review on this experiment: check the hypothesis is falsifiable, the decision rule is set in advance, it's adequately powered, and flag validity traps.",
+      "recipe": [
+        "Check the hypothesis is specific and falsifiable, with a direction and magnitude.",
+        "Confirm the success metric and the decision rule (ship / iterate / kill) are set BEFORE the test.",
+        "Sanity-check sample size / duration for the expected effect; flag underpowered tests.",
+        "Look for validity traps: novelty effects, seasonality, selection bias, peeking.",
+        "Confirm a guardrail metric protects against a harmful win.",
+        "State what the experiment will NOT tell you."
+      ],
+      "doneCriteria": "A view on whether the experiment can yield a trustworthy decision, the design gaps, the validity risks, and the pre-registered decision rule.",
+      "ritualDiscoveryWhen": [
+        "expected effect size depends on prior experiments or data you can't see",
+        "traffic/segment realities live in analytics elsewhere",
+        "related tests already answered part of this"
+      ],
+      "ritualExplorationWhen": [
+        "what you're really trying to learn is unsettled",
+        "stakeholders disagree on the decision rule",
+        "you need a recommended experiment design the team commits to"
+      ],
+      "ritualAdds": [
+        "prior experiment results and baseline data",
+        "stakeholder agreement on the decision rule",
+        "a recommended, adequately powered design"
+      ],
+      "ritualArtifactExample": "an experiment-design recommendation with the falsifiable hypothesis, pre-registered decision rule, power estimate, and a decision-ready summary"
+    },
+    {
+      "publicSkillKey": "ros_product_metrics_review_v1",
+      "taskName": "product-metrics-review",
+      "title": "Product metrics instrumentation review",
+      "emoji": "📊",
+      "function": "product",
+      "mode": "standalone",
+      "summary": "Review a metrics/instrumentation plan for a clear primary metric, guardrails, well-defined events, and the ability to actually answer the product question.",
+      "examplePrompt": "Use product-metrics-review on this instrumentation plan: confirm one primary metric tied to the goal, guardrails, well-defined events, and that it can actually answer the product question.",
+      "recipe": [
+        "Confirm there's ONE primary metric tied to the product goal, not a dashboard of vanity counts.",
+        "Check guardrail/counter-metrics exist so a win in one place can't hide a loss elsewhere.",
+        "Verify each event has a clear definition, trigger, and properties — no ambiguous names.",
+        "Check the plan can actually answer the decision question (right grain, right segments).",
+        "Flag PII or sensitive properties that shouldn't be captured.",
+        "Confirm a baseline and a target/threshold are stated."
+      ],
+      "doneCriteria": "A view on whether the instrumentation answers the question, the metric/guardrail gaps, the ambiguous events, and any privacy flags.",
+      "ritualDiscoveryWhen": [
+        "the right metric depends on prior analyses or goals you can't see",
+        "existing event taxonomy and naming conventions live elsewhere",
+        "related dashboards or experiments apply"
+      ],
+      "ritualExplorationWhen": [
+        "what success means is itself an open decision",
+        "stakeholders disagree on the primary metric",
+        "you need a recommended measurement framework the team adopts"
+      ],
+      "ritualAdds": [
+        "prior analyses, goals, and the existing event taxonomy",
+        "stakeholder agreement on the primary metric",
+        "a recommended measurement plan with guardrails"
+      ],
+      "ritualArtifactExample": "a measurement recommendation with the primary metric, guardrails, event definitions, and a decision-ready summary"
+    },
+    {
+      "publicSkillKey": "ros_react_component_review_v1",
+      "taskName": "react-component-review",
+      "title": "React component review",
+      "emoji": "⚛️",
+      "function": "development",
+      "mode": "standalone",
+      "summary": "Review a React/TypeScript component for correctness, hook safety, prop modeling, accessibility, state coverage, and minimal safe changes.",
+      "examplePrompt": "Use react-component-review on this component: review correctness, hook-dependency risks, prop typing, accessibility, and state coverage, and give me a verdict plus a minimal patch.",
+      "recipe": [
+        "Restate the component's apparent job and the requested review scope; surface any load-bearing ambiguity before reviewing.",
+        "Correctness and rendering behavior; state, effects, memoization, and hook-dependency risks.",
+        "TypeScript prop/state modeling; accessibility and keyboard/screen-reader behavior.",
+        "Data loading and loading/error/empty states.",
+        "Simplicity and surgicality — remove speculative abstraction; avoid broad rewrites unless the structure blocks the goal.",
+        "Give concrete changes as minimal patches; end with exact verification steps (test, Storybook, lint, typecheck, smoke)."
+      ],
+      "doneCriteria": "A verdict (ready / needs changes / blocked by missing context), the highest-risk issue, grouped findings, an optional minimal patch, and exact checks to run.",
+      "ritualDiscoveryWhen": [
+        "the review depends on how similar components are implemented elsewhere",
+        "a design-system primitive may already exist",
+        "you need the product spec, acceptance criteria, or the affected tests/stories"
+      ],
+      "ritualExplorationWhen": [
+        "the component embodies a pattern decision that affects other components",
+        "the right approach is contested and needs a recommendation the team aligns on"
+      ],
+      "ritualAdds": [
+        "related components, shared hooks, and design-system variants",
+        "the product spec and affected tests/stories",
+        "a recommended approach with tradeoffs"
+      ],
+      "ritualArtifactExample": "a component-design recommendation with related-component findings, the chosen pattern, affected tests, and a decision-ready summary"
+    },
+    {
+      "publicSkillKey": "ros_refactor_code_v1",
+      "taskName": "refactor-code",
+      "title": "Refactor code safely",
+      "emoji": null,
+      "function": "development",
+      "mode": "discovery",
+      "deliverableTemplate": "Refactor Plan",
+      "sections": [
+        "refactor scope + motivation",
+        "current vs target structure",
+        "behavior preservation",
+        "incremental steps",
+        "rollback safety",
+        "refactor verification"
+      ],
+      "composedSectionCount": 15
+    },
+    {
+      "publicSkillKey": "ros_release_readiness_review_v1",
+      "taskName": "release-readiness-review",
+      "title": "Release readiness review",
+      "emoji": "🚦",
+      "function": "product",
+      "mode": "standalone",
+      "summary": "Run a pre-launch readiness check across scope, quality, rollout, comms, support, and rollback — before a product release ships.",
+      "examplePrompt": "Use release-readiness-review on this launch: run a go/no-go check across scope, quality gates, rollout + rollback, comms/support, and monitoring, and name the top unresolved risk and its owner.",
+      "recipe": [
+        "Confirm the release scope matches what was committed; flag silent additions or cuts.",
+        "Check quality gates: tests, known issues, and their accepted-risk status.",
+        "Confirm a rollout plan (flag/canary/phased) and a tested rollback path exist.",
+        "Check launch comms, docs, and support enablement are ready for the audience.",
+        "Confirm success metrics and monitoring/alerts are in place to catch regressions.",
+        "Surface the top unresolved risk and its owner."
+      ],
+      "doneCriteria": "A go/no-go view, the blocking gaps by area, the rollback path, and the top unresolved risk with an owner.",
+      "ritualDiscoveryWhen": [
+        "readiness depends on engineering/QA status you can't see",
+        "support and comms artifacts live elsewhere",
+        "prior launch incidents apply"
+      ],
+      "ritualExplorationWhen": [
+        "go/no-go is contested and needs cross-functional alignment",
+        "the launch bar itself is unclear",
+        "you need a recommendation leadership signs off on"
+      ],
+      "ritualAdds": [
+        "engineering/QA status and prior launch incidents",
+        "cross-functional readiness input",
+        "a recommended go/no-go with conditions"
+      ],
+      "ritualArtifactExample": "a launch-readiness recommendation with the go/no-go call, blocking gaps, rollback plan, and a decision-ready summary"
+    },
+    {
+      "publicSkillKey": "ros_review_accessibility_v1",
+      "taskName": "review-accessibility",
+      "title": "Accessibility review",
+      "emoji": "♿",
+      "function": "development",
+      "mode": "standalone",
+      "summary": "Check keyboard, screen-reader, contrast, focus, and semantics for a UI surface.",
+      "examplePrompt": "Use review-accessibility on this component: check keyboard operation, ARIA/semantics, focus order, contrast, and announced changes, and flag each issue with the offending element.",
+      "recipe": [
+        "Every interactive element is keyboard-reachable and operable — no mouse-only paths.",
+        "Semantic elements / ARIA roles + labels are correct; landmarks present.",
+        "Visible focus state on all focusable elements; focus order is logical.",
+        "Text and essential UI meet WCAG AA contrast.",
+        "Dynamic changes are announced (aria-live / role) where the user must notice them."
+      ],
+      "doneCriteria": "Each item is confirmed, or raised as an explicit gap with the offending element noted.",
+      "ritualDiscoveryWhen": [
+        "the project has an accessibility standard or design-system primitives you can't see",
+        "related components already solved the same pattern",
+        "there are affected visual/regression tests elsewhere"
+      ],
+      "ritualExplorationWhen": [
+        "accessibility scope is a decision (which WCAG level, which surfaces first)",
+        "the fix spans many components and needs prioritization",
+        "you need a recommendation the team can align on"
+      ],
+      "ritualAdds": [
+        "the project's accessibility standard and design-system usage",
+        "related components and shared patterns",
+        "a prioritized remediation recommendation"
+      ],
+      "ritualArtifactExample": "an accessibility remediation recommendation with prioritized issues, the target WCAG level, affected components, and a decision-ready summary"
+    },
+    {
+      "publicSkillKey": "ros_review_creative_brand_fit_v1",
+      "taskName": "review-creative-brand-fit",
+      "title": "Review creative for brand fit",
+      "emoji": null,
+      "function": "marketing",
+      "mode": "discovery",
+      "deliverableTemplate": "Creative Review Brief",
+      "sections": [
+        "review summary",
+        "brand fit assessment",
+        "voice + tone check",
+        "visual identity check",
+        "narrative consistency",
+        "issues + revisions",
+        "approval decision"
+      ],
+      "composedSectionCount": 16
+    },
+    {
+      "publicSkillKey": "ros_review_error_handling_v1",
+      "taskName": "review-error-handling",
+      "title": "Review error handling",
+      "emoji": "🧯",
+      "function": "development",
+      "mode": "standalone",
+      "summary": "Audit failure states, retries, validation, and idempotency in the code under review.",
+      "examplePrompt": "Use review-error-handling on this service: audit every error path, input validation, timeout/retry, log/metric, and idempotency, and list each gap with the file and line.",
+      "recipe": [
+        "Every external/IO call has a typed error path + handling — no silent catch, no swallowed rejection.",
+        "Inputs are validated at the boundary before use (shape, range, auth/tenant scope).",
+        "Outbound calls have timeouts + bounded retries with backoff; no unbounded waits.",
+        "Failures emit structured logs/metrics with enough context to triage.",
+        "Mutating operations are idempotent under retry, or explicitly justified not to be."
+      ],
+      "doneCriteria": "Each item is confirmed present in the code under review, or raised as an explicit gap with the file/line noted.",
+      "ritualDiscoveryWhen": [
+        "the correct failure behavior depends on callers or downstream consumers you can't see",
+        "prior incidents on this surface should shape the handling",
+        "retry/idempotency conventions live in other services"
+      ],
+      "ritualExplorationWhen": [
+        "the failure policy is an unresolved decision (fail-open vs fail-closed, user-visible vs silent)",
+        "the change needs sign-off from owners of dependent services",
+        "you need a recommendation before standardizing handling across the codebase"
+      ],
+      "ritualAdds": [
+        "callers and downstream consumers affected by the error policy",
+        "prior incidents and the conventions they established",
+        "a recommended, owner-reviewed handling standard"
+      ],
+      "ritualArtifactExample": "an error-handling recommendation with the chosen failure policy, affected callers, retry/idempotency rules, and a decision-ready summary"
+    },
+    {
+      "publicSkillKey": "ros_review_loading_error_empty_states_v1",
+      "taskName": "review-loading-error-empty-states",
+      "title": "Loading / error / empty state review",
+      "emoji": "🔄",
+      "function": "development",
+      "mode": "standalone",
+      "summary": "Check loading, error, empty, partial, and retry states for a UI surface.",
+      "examplePrompt": "Use review-loading-error-empty-states on this screen: confirm a loading, error (with retry), empty, and slow-network state for every async path, and flag the ones that are missing.",
+      "recipe": [
+        "A loading state for every async fetch (skeleton/spinner); no layout jump on resolve.",
+        "An error state with a user-facing message and a retry affordance where recoverable.",
+        "An empty state distinct from loading — never a blank or zero-render.",
+        "Partial-data and slow-network behavior is defined, not accidental.",
+        "No unhandled rejection leaves a dead UI; every failure has a visible outcome."
+      ],
+      "doneCriteria": "Each state is confirmed handled, or raised as an explicit gap.",
+      "ritualDiscoveryWhen": [
+        "the product's expected states live in a spec or acceptance criteria you can't see",
+        "related surfaces already define the canonical empty/error treatment",
+        "there are shared state components used elsewhere"
+      ],
+      "ritualExplorationWhen": [
+        "the desired states are an open product decision",
+        "you need consistency across many surfaces and a recommendation to align on"
+      ],
+      "ritualAdds": [
+        "product acceptance states from the spec",
+        "the canonical state treatments used across the app",
+        "a recommendation for consistent state handling"
+      ],
+      "ritualArtifactExample": "a state-coverage recommendation mapping each required loading/error/empty state to its treatment, with acceptance criteria and a decision-ready summary"
+    },
+    {
+      "publicSkillKey": "ros_roadmap_prioritization_review_v1",
+      "taskName": "roadmap-prioritization-review",
+      "title": "Roadmap prioritization review",
+      "emoji": "🗂️",
+      "function": "product",
+      "mode": "standalone",
+      "summary": "Sanity-check a prioritized roadmap or backlog for a consistent ranking rationale, surfaced tradeoffs, and dependencies — before it's committed.",
+      "examplePrompt": "Use roadmap-prioritization-review on this backlog: check the ranking rationale is consistent, surface hidden dependencies and what's being silently deprioritized, and flag items to scope first.",
+      "recipe": [
+        "Confirm each item ties to a stated goal or problem, not just an output.",
+        "Check the ranking uses a consistent rationale (impact, effort, confidence, dependency) applied evenly.",
+        "Surface dependencies and sequencing risks the order ignores.",
+        "Flag items that are large/ambiguous and should be scoped or split before ranking.",
+        "Identify what's being implicitly deprioritized and whether that's intentional.",
+        "Note where evidence for impact is assumed rather than known."
+      ],
+      "doneCriteria": "A view on whether the ranking holds up, the inconsistencies, the hidden dependencies, and the items that need scoping first.",
+      "ritualDiscoveryWhen": [
+        "impact estimates depend on data or customer evidence you can't see",
+        "engineering effort/dependencies live in other teams",
+        "prior prioritization decisions apply"
+      ],
+      "ritualExplorationWhen": [
+        "priorities are contested across stakeholders and need alignment",
+        "the goal the roadmap serves is itself unsettled",
+        "you need a recommendation leadership commits to"
+      ],
+      "ritualAdds": [
+        "impact evidence and effort/dependency input",
+        "stakeholder priorities and prior decisions",
+        "a recommended, rationale-backed ordering"
+      ],
+      "ritualArtifactExample": "a prioritization recommendation with a consistent ranking rationale, surfaced tradeoffs and dependencies, and a decision-ready summary"
+    },
+    {
+      "publicSkillKey": "ros_synthesize_prototype_learnings_v1",
+      "taskName": "synthesize-prototype-learnings",
+      "title": "Synthesize prototype learnings",
+      "emoji": null,
+      "function": "product",
+      "mode": "discovery",
+      "deliverableTemplate": "Prototype Learnings Brief",
+      "sections": [
+        "learnings summary",
+        "what we set out to learn",
+        "key learnings",
+        "decision and direction",
+        "trade-offs",
+        "next steps"
+      ],
+      "composedSectionCount": 16
+    },
+    {
+      "publicSkillKey": "ros_understand_codebase_v1",
+      "taskName": "understand-codebase",
+      "title": "Understand codebase area",
+      "emoji": null,
+      "function": "development",
+      "mode": "discovery",
+      "deliverableTemplate": "Codebase Orientation Brief",
+      "sections": [
+        "area boundary",
+        "key modules + entry points",
+        "data + state flow",
+        "extension points",
+        "gotchas + tech debt",
+        "where to start"
+      ],
+      "composedSectionCount": 18
+    },
+    {
+      "publicSkillKey": "ros_validate_product_concept_v1",
+      "taskName": "validate-product-concept",
+      "title": "Validate product concept",
+      "emoji": null,
+      "function": "product",
+      "mode": "discovery",
+      "deliverableTemplate": "Concept Validation Brief",
+      "sections": [
+        "validation goals",
+        "research questions",
+        "method",
+        "participants",
+        "evidence findings",
+        "validation verdict",
+        "next steps"
+      ],
+      "composedSectionCount": 19
+    },
+    {
+      "publicSkillKey": "ros_validate_prototype_v1",
+      "taskName": "validate-prototype",
+      "title": "Validate prototype with users",
+      "emoji": null,
+      "function": "product",
+      "mode": "discovery",
+      "deliverableTemplate": "Prototype Validation Brief",
+      "sections": [
+        "study plan",
+        "research questions",
+        "participants",
+        "test protocol",
+        "findings",
+        "confidence and recommendation"
+      ],
+      "composedSectionCount": 15
+    },
+    {
+      "publicSkillKey": "ros_write_content_asset_v1",
+      "taskName": "write-content-asset",
+      "title": "Write or refine high-value content asset",
+      "emoji": null,
+      "function": "marketing",
+      "mode": "discovery",
+      "deliverableTemplate": "Content Asset Brief",
+      "sections": [
+        "asset summary",
+        "audience + intent",
+        "core angle + thesis",
+        "key messages",
+        "asset outline",
+        "proof + sources",
+        "cta + next step",
+        "seo + distribution"
+      ],
+      "composedSectionCount": 20
+    }
+  ],
+  "_note": "PUBLIC-SAFE catalog. The internal job/persona mapping + server-side resolver are stripped (they never leave the Ritual backend). Synced from the monorepo for the generator; published skills carry only the opaque public_skill_key."
+}

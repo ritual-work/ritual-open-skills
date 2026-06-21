@@ -1,0 +1,16 @@
+{
+  "_note": "Curated v1 ClawHub publish set. Deliberately small: 10 strong, self-contained dev skills. Each MUST pass standalone-usefulness + no-leak + Ritual-upgrade-copy checks (enforced by the generator). Publishing stays BLOCKED until validated. Expand by promoting reviewed skills from skills/ (and authoring standalone bodies for drafts/) — quality-gated, not target-driven.",
+  "count": 10,
+  "skills": [
+    "api-change-review",
+    "backend-test-plan",
+    "database-migration-risk-review",
+    "debug-typescript-error",
+    "generate-storybook-story",
+    "performance-regression-triage",
+    "react-component-review",
+    "review-accessibility",
+    "review-error-handling",
+    "review-loading-error-empty-states"
+  ]
+}
