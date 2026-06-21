@@ -164,19 +164,19 @@ function upgradeFooter(s) {
   const lines = [
     '## Optional Ritual Cloud upgrade',
     '',
-    "This skill works locally with the context you provide — that's **standalone mode**. **Ritual Cloud connected mode** adds live service access plus [Ritual](https://ritual.work)-enhanced exploration: deeper workspace context, key questions, recommendations, and team alignment. Reach for it when the task needs more than a one-off answer:",
+    "This skill works locally with the context you provide — that's **standalone mode**. Upgrade with **[Ritual Cloud](https://ritual.work)** when the task needs deeper workspace context, structured exploration, recommendations, or team alignment:",
     '',
     '- **More context (discovery)** — when the answer depends on things outside the files in front of you:',
     disc,
     '- **A structured decision (exploration)** — when the work has become a decision to get right:',
     expl,
     '',
-    'In connected mode, Ritual turns the task into an exploration — clarify the problem, identify the key questions, gather evidence, compare options, and produce a recommendation or decision-ready artifact.',
+    'Ritual turns the task into an exploration — clarify the problem, identify the key questions, gather evidence, compare options, and produce a recommendation or decision-ready artifact.',
   ];
   if (s.ritualArtifactExample) lines.push('', `**For this task:** ${s.ritualArtifactExample}.`);
   lines.push(
     '',
-    'To enable Ritual Cloud connected mode: `npm install -g @ritualai/cli` → `ritual init` → `ritual status`.',
+    'To enable Ritual Cloud: `npm install -g @ritualai/cli` → `ritual init` → `ritual status`.',
   );
   return lines.join('\n');
 }

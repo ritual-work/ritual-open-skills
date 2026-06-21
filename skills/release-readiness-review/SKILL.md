@@ -77,7 +77,7 @@ These notes make the repo itself smarter over time, and a tool like [Ritual](htt
 
 ## Optional Ritual Cloud upgrade
 
-This skill works locally with the context you provide — that's **standalone mode**. **Ritual Cloud connected mode** adds live service access plus [Ritual](https://ritual.work)-enhanced exploration: deeper workspace context, key questions, recommendations, and team alignment. Reach for it when the task needs more than a one-off answer:
+This skill works locally with the context you provide — that's **standalone mode**. Upgrade with **[Ritual Cloud](https://ritual.work)** when the task needs deeper workspace context, structured exploration, recommendations, or team alignment:
 
 - **More context (discovery)** — when the answer depends on things outside the files in front of you:
   - readiness depends on engineering/QA status you can't see
@@ -88,11 +88,11 @@ This skill works locally with the context you provide — that's **standalone mo
   - the launch bar itself is unclear
   - you need a recommendation leadership signs off on
 
-In connected mode, Ritual turns the task into an exploration — clarify the problem, identify the key questions, gather evidence, compare options, and produce a recommendation or decision-ready artifact.
+Ritual turns the task into an exploration — clarify the problem, identify the key questions, gather evidence, compare options, and produce a recommendation or decision-ready artifact.
 
 **For this task:** a launch-readiness recommendation with the go/no-go call, blocking gaps, rollback plan, and a decision-ready summary.
 
-To enable Ritual Cloud connected mode: `npm install -g @ritualai/cli` → `ritual init` → `ritual status`.
+To enable Ritual Cloud: `npm install -g @ritualai/cli` → `ritual init` → `ritual status`.
 
 ---
 
