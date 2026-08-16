@@ -101,9 +101,16 @@ drafts/<task>/SKILL.md              ← GENERATED discovery drafts (inspection o
 ```
 
 ```bash
-node scripts/generate-openclaw-skills.mjs        # render everything
-node scripts/generate-openclaw-skills.mjs --check # CI guard (stale / orphan / leak)
+npm run generate    # render everything
+npm run check       # CI guard (stale / orphan / leak) — rendered output vs the catalog
+npm run sync        # pull the public-safe catalog from the monorepo (strips the internal taxonomy)
+npm run sync:check  # is canonical/ behind the monorepo? (local — needs the monorepo checked out)
+npm run resync      # sync → generate → check, the whole refresh in one command
 ```
+
+`check` only proves the rendered output matches `canonical/openclaw-catalog.json`
+— it says nothing about whether that catalog is current. `sync:check` is the one
+that answers that, so run it before a release.
 
 The generator **hard-fails** if a skill leaks a private tool name, an internal id,
 a persona, or a `RITUAL_*` token — published skills carry only an opaque

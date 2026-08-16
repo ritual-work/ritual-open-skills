@@ -8,6 +8,9 @@
   "type": "module",
   "scripts": {
     "generate": "node scripts/generate-openclaw-skills.mjs",
-    "check": "node scripts/generate-openclaw-skills.mjs --check"
+    "check": "node scripts/generate-openclaw-skills.mjs --check",
+    "sync": "node scripts/sync-catalog.mjs",
+    "sync:check": "node scripts/sync-catalog.mjs --check",
+    "resync": "npm run sync && npm run generate && npm run check"
   }
 }

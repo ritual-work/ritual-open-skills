@@ -1,15 +1,15 @@
 ---
-name: build-mock-prototype
-description: "DRAFT — Build mock prototype (pending a standalone local workflow before publish)."
+name: build-prototype
+description: "DRAFT — Build prototype (pending a standalone local workflow before publish)."
 version: 0.1.0
 homepage: https://ritual.work
 metadata:
   ritual:
-    public_skill_key: ros_build_mock_prototype_v1
+    public_skill_key: ros_build_prototype_v1
     status: draft
 ---
 
-# Build mock prototype — DRAFT (not in the v1 publish set)
+# Build prototype — DRAFT (not in the v1 publish set)
 
 > **Draft for inspection.** This skill does not yet have an authored, standalone
 > local workflow, so it is **not** publish-eligible. It's here as raw material:
@@ -19,16 +19,15 @@ metadata:
 
 ## What a full exploration produces
 
-A **Mock Prototype Brief**. This lens contributes:
+A **Prototype Spec**. This lens contributes:
 
-- prototype overview
-- flows and screens
-- interaction model
-- visual fidelity
-- content and data
-- handoff notes
+- prototype premise
+- screens and flow
+- interactions and states
+- look and feel
+- scenarios to support
 
-*The full deliverable composes 16 sections across every contributing lens.*
+*The full deliverable composes 12 sections across every contributing lens.*
 
 ## Optional Ritual upgrade
 

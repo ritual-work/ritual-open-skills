@@ -35,8 +35,12 @@ draft (preview)  →  review  →  standalone recipe in the monorepo source
    `ritualDiscoveryWhen` / `ritualExplorationWhen` / `ritualArtifactExample` fields.
    (A brand-new task may also need a `jtbd_id` in `work-graph.ts`.)
 3. **Regenerate + sync.** In the monorepo: build shared-types, run
-   `emit-openclaw-catalog.mjs`. Copy the refreshed `openclaw-catalog.json` into
-   `canonical/` here, then run `node scripts/generate-openclaw-skills.mjs`.
+   `emit-openclaw-catalog.mjs`. Then here, `npm run resync` (sync → generate →
+   check). Do **not** hand-copy the catalog: the monorepo emits it *with* the
+   internal taxonomy (`resolverMap` + per-skill `_internal`), which this repo's
+   generator hard-fails on — `npm run sync` strips it deterministically. It finds
+   the monorepo at `../ritual-enterprise` by default; override with
+   `npm run sync -- --from=/path/to/ritual-enterprise` or `RITUAL_MONOREPO`.
 4. **Review the rendered skill** in `skills/<task>/SKILL.md`.
 5. **Allowlist only after review.** Add the `taskName` to
    `canonical/v1-publish-allowlist.json`. A skill can exist in the catalog and stay
