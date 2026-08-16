@@ -224,26 +224,17 @@ function renderSkill(s) {
   const scrubbed = scrubPublic(body, { tidy: false });
   const leaks = detectOpenclawLeaks(scrubbed);
   if (leaks.length) fail(`leak(s) in skill "${s.taskName}":\n  - ${leaks.join('\n  - ')}`);
-  assertNoInternalTokens(scrubbed, s);
   return scrubbed;
 }
 
-// Tripwire for the internal jtbd id appearing publicly — EXCEPT when it's also
-// this skill's own public task name (a job name like `add-tests` is the public
-// label, not a leaked mapping key). jtbd slugs are distinctive hyphenated tokens,
-// so substring-matching is safe here.
-//
-// Persona is NOT substring-checked: omission is STRUCTURAL (no renderer ever emits
-// `s._internal`), and persona slugs/labels are common English words ("developer",
-// "designer") that legitimately appear in section text — matching them would
-// false-positive. If a renderer is ever changed to emit persona, that's a code
-// review concern, not a string scan.
-function assertNoInternalTokens(md, s) {
-  const jtbd = s._internal?.jtbdId;
-  if (jtbd && jtbd !== s.taskName && md.includes(jtbd)) {
-    fail(`internal jtbd id "${jtbd}" leaked into "${s.taskName}".`);
-  }
-}
+// NOTE: the jtbd-mapping tripwire deliberately does NOT live here. It used to, as
+// assertNoInternalTokens(md, s) reading `s._internal?.jtbdId` — but the catalog this
+// file loads is public-safe, so `_internal` is always stripped, the id was always
+// undefined, and the check silently passed on every skill. It could not have fired
+// under any input either: an unstripped catalog hard-fails at load (see the top of
+// this file). A guard that cannot fail is worse than none, because it reads like
+// coverage. It now runs in scripts/sync-catalog.mjs, the one step that sees the
+// mapping and the public fields at the same time.
 
 // A discovery skill has no authored standalone body yet — render a clearly-marked
 // DRAFT (for inspection / authoring), never publish-eligible. Shows the job + what
@@ -292,7 +283,6 @@ function renderDraft(s) {
   const scrubbed = scrubPublic(body, { tidy: false });
   const leaks = detectOpenclawLeaks(scrubbed);
   if (leaks.length) fail(`leak(s) in draft "${s.taskName}":\n  - ${leaks.join('\n  - ')}`);
-  assertNoInternalTokens(scrubbed, s);
   return scrubbed;
 }
 

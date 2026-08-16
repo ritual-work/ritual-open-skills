@@ -82,6 +82,49 @@ const src = JSON.parse(readFileSync(SRC, 'utf8'));
 if (!Array.isArray(src.skills) || !src.skills.length) fail(`${SRC} has no skills[].`);
 if (!src.sourceSha) fail(`${SRC} has no sourceSha — is it the emitted catalog?`);
 
+// --- jtbd leak tripwire ------------------------------------------------------
+// This check HAS to live here, not in the generator. The generator's copy read
+// `s._internal?.jtbdId` from the already-stripped catalog, so the id was always
+// undefined and the check no-opped on every skill — a guard that could never fire
+// (and could never fire by construction: an unstripped catalog hard-fails at load
+// there instead). Sync is the only step that sees both sides, so it is the only
+// place the mapping can actually be checked.
+//
+// What leaks: for most publishable skills the internal jtbdId DIFFERS from the
+// public task name (api-change-review -> build-backend-service), and those ids are
+// separately public as discovery task names. So the id string is not the secret —
+// the PAIRING is. A body that names its own jtbdId hands over one row of the
+// internal map.
+//
+// Checking the public payload (rather than rendered markdown, which does not exist
+// yet at sync time) is equivalent coverage: every rendered body is composed from
+// these fields plus generator-owned templates, and the templates never see a jtbd.
+// Catching it here also fails the sync instead of shipping a bad catalog first.
+//
+// Persona is deliberately NOT substring-checked: slugs and labels are ordinary
+// English ("developer", "product manager") that legitimately appears in titles and
+// section text, so it false-positives. Its omission is structural — nothing outside
+// `_internal` ever carries it, and the strip below is asserted.
+if (!src.skills.some((s) => s._internal?.jtbdId)) {
+  fail(
+    `${SRC} carries no _internal.jtbdId, so the jtbd-leak tripwire cannot run.\n` +
+      `Sync from the monorepo's emitted catalog (it is stripped on the way in here) — ` +
+      `syncing an already-public catalog would silently skip the check.`,
+  );
+}
+for (const s of src.skills) {
+  const jtbd = s._internal?.jtbdId;
+  // A jtbd that IS the public task name is the skill's own label, not a mapping.
+  if (!jtbd || jtbd === s.taskName) continue;
+  const { _internal, ...pub } = s;
+  if (JSON.stringify(pub).includes(jtbd)) {
+    fail(
+      `internal jtbd id "${jtbd}" appears in the PUBLIC fields of "${s.taskName}" — ` +
+        `that leaks one row of the jtbd mapping. Fix the recipe in the monorepo, re-emit, then re-sync.`,
+    );
+  }
+}
+
 // The strip. Deleting `_internal` per skill preserves the remaining key order, so the
 // synced file stays byte-stable across re-syncs that change nothing.
 const { resolverMap: _drop, _generated: _drop2, ...rest } = src;

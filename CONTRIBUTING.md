@@ -64,7 +64,7 @@ draft (preview)  →  review  →  standalone recipe in the monorepo source
 
 - [ ] **Works with zero Ritual** — a complete local workflow + `Done when:`, no Ritual gate before it. Not a thin router.
 - [ ] **No private Ritual MCP tool names** (`mcp__ritual__*`).
-- [ ] **No internal `jtbd_id`** in the published text (the opaque `public_skill_key` is the only Ritual identifier).
+- [ ] **No internal `jtbd_id`** in the published text (the opaque `public_skill_key` is the only Ritual identifier). Enforced by `npm run sync`, not the generator — sync is the only step that sees the mapping and the public fields together.
 - [ ] **No persona labels or weights.**
 - [ ] **No `RITUAL_*` tokens** anywhere — prose or frontmatter (v1 is token-free).
 - [ ] **A concrete, skill-specific Ritual upgrade footer** — names a discovery *and* an exploration reason, plus a concrete decision-ready artifact (not a generic CTA).
