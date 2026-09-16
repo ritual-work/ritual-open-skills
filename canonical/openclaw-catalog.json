@@ -1,6 +1,6 @@
 {
   "_generated": "Generated from the Ritual catalog; consumed by scripts/generate-openclaw-skills.mjs. Public-safe: internal taxonomy + server resolver are stripped; published skills carry only the opaque public_skill_key.",
-  "sourceSha": "08daee8dfc06c1d9",
+  "sourceSha": "398970041a08cfda",
   "skillCount": 68,
   "standaloneCount": 24,
   "discoveryCount": 44,
