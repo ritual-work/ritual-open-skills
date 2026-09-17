@@ -1,11 +1,11 @@
 {
   "_generated": "Generated from the Ritual catalog; consumed by scripts/generate-openclaw-skills.mjs. Public-safe: internal taxonomy + server resolver are stripped; published skills carry only the opaque public_skill_key.",
-  "sourceSha": "398970041a08cfda",
-  "skillCount": 68,
+  "sourceSha": "3487ab08a6f87565",
+  "skillCount": 71,
   "standaloneCount": 24,
-  "discoveryCount": 44,
+  "discoveryCount": 47,
   "byFunction": {
-    "development": 25,
+    "development": 28,
     "product": 24,
     "marketing": 19
   },
@@ -588,6 +588,23 @@
       "ritualArtifactExample": "a type-contract recommendation identifying the source of truth, affected call sites, and the adopted fix, with a decision-ready summary"
     },
     {
+      "publicSkillKey": "ros_decide_architecture_v1",
+      "taskName": "decide-architecture",
+      "title": "Make an architecture decision",
+      "emoji": null,
+      "function": "development",
+      "mode": "discovery",
+      "deliverableTemplate": "Architecture Decision Record",
+      "sections": [
+        "decision statement",
+        "context and forces",
+        "options considered",
+        "decision and rationale",
+        "consequences"
+      ],
+      "composedSectionCount": 11
+    },
+    {
       "publicSkillKey": "ros_define_customer_problem_v1",
       "taskName": "define-customer-problem",
       "title": "Define customer problem",
@@ -1094,6 +1111,23 @@
       "ritualArtifactExample": "a regression-triage recommendation with ranked hypotheses, the correlated deploy, the chosen remediation, and a decision-ready summary"
     },
     {
+      "publicSkillKey": "ros_plan_migration_v1",
+      "taskName": "plan-migration",
+      "title": "Plan a migration",
+      "emoji": null,
+      "function": "development",
+      "mode": "discovery",
+      "deliverableTemplate": "Migration Plan",
+      "sections": [
+        "migration context",
+        "migration inventory",
+        "ordered steps",
+        "verification per step",
+        "cutover"
+      ],
+      "composedSectionCount": 12
+    },
+    {
       "publicSkillKey": "ros_plan_product_experiment_v1",
       "taskName": "plan-product-experiment",
       "title": "Plan product experiment",
@@ -1568,6 +1602,23 @@
         "a recommended, rationale-backed ordering"
       ],
       "ritualArtifactExample": "a prioritization recommendation with a consistent ranking rationale, surfaced tradeoffs and dependencies, and a decision-ready summary"
+    },
+    {
+      "publicSkillKey": "ros_specify_evals_v1",
+      "taskName": "specify-evals",
+      "title": "Specify an eval suite",
+      "emoji": null,
+      "function": "development",
+      "mode": "discovery",
+      "deliverableTemplate": "Eval Specification",
+      "sections": [
+        "evaluated behavior",
+        "case inventory",
+        "expected outputs",
+        "grading design",
+        "suite layout"
+      ],
+      "composedSectionCount": 15
     },
     {
       "publicSkillKey": "ros_synthesize_prototype_learnings_v1",
