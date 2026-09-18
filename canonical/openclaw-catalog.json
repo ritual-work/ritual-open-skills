@@ -1,11 +1,11 @@
 {
   "_generated": "Generated from the Ritual catalog; consumed by scripts/generate-openclaw-skills.mjs. Public-safe: internal taxonomy + server resolver are stripped; published skills carry only the opaque public_skill_key.",
-  "sourceSha": "3487ab08a6f87565",
-  "skillCount": 71,
+  "sourceSha": "ca3d039c5bbfc2ab",
+  "skillCount": 72,
   "standaloneCount": 24,
-  "discoveryCount": 47,
+  "discoveryCount": 48,
   "byFunction": {
-    "development": 28,
+    "development": 29,
     "product": 24,
     "marketing": 19
   },
@@ -225,6 +225,24 @@
         "site testing"
       ],
       "composedSectionCount": 21
+    },
+    {
+      "publicSkillKey": "ros_build_feature_v1",
+      "taskName": "build-feature",
+      "title": "Build a feature",
+      "emoji": null,
+      "function": "development",
+      "mode": "discovery",
+      "deliverableTemplate": "Build Brief",
+      "sections": [
+        "goal",
+        "non-goals",
+        "key constraints + tradeoffs",
+        "implementation order",
+        "suggested implementation",
+        "codebase anchors"
+      ],
+      "composedSectionCount": 15
     },
     {
       "publicSkillKey": "ros_build_frontend_feature_v1",
