@@ -1,13 +1,14 @@
 {
   "_generated": "Generated from the Ritual catalog; consumed by scripts/generate-openclaw-skills.mjs. Public-safe: internal taxonomy + server resolver are stripped; published skills carry only the opaque public_skill_key.",
-  "sourceSha": "ca3d039c5bbfc2ab",
-  "skillCount": 72,
+  "sourceSha": "3f7e28ce8b6ca12a",
+  "skillCount": 78,
   "standaloneCount": 24,
-  "discoveryCount": 48,
+  "discoveryCount": 54,
   "byFunction": {
-    "development": 29,
-    "product": 24,
-    "marketing": 19
+    "development": 30,
+    "product": 26,
+    "marketing": 21,
+    "operations": 1
   },
   "skills": [
     {
@@ -698,6 +699,22 @@
       "composedSectionCount": 15
     },
     {
+      "publicSkillKey": "ros_define_target_sponsor_segments_v1",
+      "taskName": "define-target-sponsor-segments",
+      "title": "Define target sponsor segments and profiles",
+      "emoji": null,
+      "function": "marketing",
+      "mode": "discovery",
+      "deliverableTemplate": "Target Sponsor Strategy and Prospect Profiles",
+      "sections": [
+        "ideal sponsor criteria",
+        "target company shortlist",
+        "decision-maker profiles",
+        "qualification + outreach"
+      ],
+      "composedSectionCount": 12
+    },
+    {
       "publicSkillKey": "ros_design_growth_experiment_v1",
       "taskName": "design-growth-experiment",
       "title": "Design growth experiment",
@@ -773,6 +790,56 @@
         "review + sign-off"
       ],
       "composedSectionCount": 21
+    },
+    {
+      "publicSkillKey": "ros_develop_sponsorship_packages_v1",
+      "taskName": "develop-sponsorship-packages",
+      "title": "Develop sponsorship packages",
+      "emoji": null,
+      "function": "marketing",
+      "mode": "discovery",
+      "deliverableTemplate": "Sponsorship Offering and Delivery Plan",
+      "sections": [
+        "sponsorship objectives",
+        "audiences + reach",
+        "asset inventory",
+        "package design",
+        "sponsor value + activation"
+      ],
+      "composedSectionCount": 16
+    },
+    {
+      "publicSkillKey": "ros_evaluate_technical_solution_v1",
+      "taskName": "evaluate-technical-solution",
+      "title": "Technical solution evaluation",
+      "emoji": null,
+      "function": "product",
+      "mode": "discovery",
+      "deliverableTemplate": "Supplier Requirements Specification",
+      "sections": [
+        "intended function",
+        "supply boundary",
+        "operating conditions",
+        "applicable references",
+        "requirement targets",
+        "open items"
+      ],
+      "composedSectionCount": 21
+    },
+    {
+      "publicSkillKey": "ros_formulate_strategy_v1",
+      "taskName": "formulate-strategy",
+      "title": "Formulate a strategy for an opportunity or threat",
+      "emoji": null,
+      "function": "product",
+      "mode": "discovery",
+      "deliverableTemplate": "Strategic Narrative",
+      "sections": [
+        "executive summary",
+        "strategic recommendations",
+        "phases"
+      ],
+      "composedSectionCount": 15
     },
     {
       "publicSkillKey": "ros_frame_product_opportunity_v1",
@@ -1096,6 +1163,24 @@
       "ritualArtifactExample": "an MVP-scope recommendation with the core hypothesis, the explicit cuts, the success/kill signal, and a decision-ready summary"
     },
     {
+      "publicSkillKey": "ros_organisational_redesign_v1",
+      "taskName": "organisational-redesign",
+      "title": "Organisational redesign",
+      "emoji": null,
+      "function": "operations",
+      "mode": "discovery",
+      "deliverableTemplate": "Transformation Plan",
+      "sections": [
+        "transformation ambition",
+        "future state",
+        "strategic priorities",
+        "operating model",
+        "governance + decision rights",
+        "roadmap + milestones"
+      ],
+      "composedSectionCount": 18
+    },
+    {
       "publicSkillKey": "ros_performance_regression_triage_v1",
       "taskName": "performance-regression-triage",
       "title": "Performance regression triage",
@@ -1412,6 +1497,33 @@
         "a recommended approach with tradeoffs"
       ],
       "ritualArtifactExample": "a component-design recommendation with related-component findings, the chosen pattern, affected tests, and a decision-ready summary"
+    },
+    {
+      "publicSkillKey": "ros_readback_pr_v1",
+      "taskName": "readback-pr",
+      "title": "Read back an implementation before the PR",
+      "emoji": null,
+      "function": "development",
+      "mode": "discovery",
+      "deliverableTemplate": "Build brief",
+      "sections": [
+        "goal",
+        "non-goals",
+        "key constraints + tradeoffs",
+        "implementation order",
+        "suggested implementation",
+        "codebase anchors",
+        "user-facing outcome",
+        "deferrable scope",
+        "scope boundary",
+        "sequencing + risk",
+        "review expectations",
+        "required outcomes",
+        "verification",
+        "affected surfaces",
+        "states to cover"
+      ],
+      "composedSectionCount": 15
     },
     {
       "publicSkillKey": "ros_refactor_code_v1",
